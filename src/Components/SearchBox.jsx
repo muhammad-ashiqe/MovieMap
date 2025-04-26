@@ -1,24 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { FiSearch, FiX } from "react-icons/fi";
 
-const SearchBar = ({ setSearchQuery, searchQuery }) => {
-  const handleInputChange = (e) => {
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
+  const handleChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(searchQuery);
-  }, [searchQuery]);
+  const clearSearch = () => {
+    setSearchQuery("");
+  };
 
   return (
-    <div className="bg-inherit py-4 shadow-md w-full mb-5">
-      <div className="container mx-auto px-10 md:px-100 flex items-center space-x-2">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleInputChange}
-          placeholder="Search for movies..."
-          className="flex-grow p-3 rounded-lg text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
-        />
+    <div className="bg-emerald-50 dark:bg-gray-900 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="relative">
+          {/* Search Icon */}
+          <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500 dark:text-emerald-400" size={20} />
+
+          {/* Input */}
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleChange}
+            placeholder="Search for movies..."
+            className="w-full pl-12 pr-12 py-3 rounded-2xl bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all duration-300"
+          />
+
+          {/* Clear Button */}
+          {searchQuery && (
+            <button
+              onClick={clearSearch}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+            >
+              <FiX size={20} />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

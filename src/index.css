@@ -5,5 +5,5 @@
 /* @import "~slick-carousel/slick/slick-theme.css"; */
 
 body{
-  background: #000c24;
+  background:oklch(0.16 0.06 256.58);
 }
