@@ -22,7 +22,7 @@ const Home = () => {
     try {
       const endpoint = query ? "search/movie" : "trending/movie/day";
       const params = query
-        ? { query, include_adult: true, language: "en-US", page }
+        ? { query, include_adult: false, language: "en-US", page }
         : { language: "en-US", page };
 
       const response = await axios.get(`${BASE_URL}${endpoint}`, {
